@@ -5,6 +5,7 @@ const app = express()
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static("public"))
 
 const PORT = 3000
 
@@ -23,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    let todo = req.body.todo
+    let todo = req.body.newItem
     items.push(todo)
 
     res.redirect('/')
